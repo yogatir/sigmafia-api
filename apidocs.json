@@ -1,0 +1,2412 @@
+{
+    "openapi": "3.0.0",
+    "info":{
+        "title": "POS Cloud Service - API",
+        "description": "List of API for POS",
+        "version": "1.0.0"
+    },
+    "_servers": {
+        "url": "http://localhost:3000",
+        "description": "localhost"
+    },
+    "tags": [
+        {
+            "name": "Auth",
+            "description": "Authentication Route"
+        },
+        {
+            "name": "Store",
+            "description": "Store Route"
+        },
+        {
+            "name": "Register",
+            "description": "Register Route"
+        },
+        {
+            "name": "Device",
+            "description": "Device Route"
+        },
+        {
+            "name": "Item",
+            "description": "Item Route"
+        },
+        {
+            "name": "User",
+            "description": "User Route"
+        },
+        {
+            "name": "Tax",
+            "description": "Tax Route"
+        },
+        {
+            "name": "General",
+            "description": "General Route"
+        },
+        {
+            "name": "Custom Configuration",
+            "description": "Custom Configuration Route"
+        },
+        {
+            "name": "Sync Log",
+            "description": "Sync Log Route"
+        },
+        {
+            "name": "Customer",
+            "description": "Customers Route"
+        },
+        {
+            "name": "Shift",
+            "description": "Shifts Route"
+        },
+        {
+            "name": "Attendance",
+            "description": "Attendance Route"
+        }
+    ],
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    },
+    "paths": {
+        "/v1/auth/system-sign-in":{
+            "post":{
+                "tags":[
+                    "Auth"
+                ],
+                "summary": "User system sign in",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "company_code": {
+                                        "type": "string"
+                                    },
+                                    "store_id": {
+                                        "type": "integer"
+                                    },
+                                    "user_name": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    },
+                                    "platform": {
+                                        "type": "string"
+                                    },
+                                    "os_version": {
+                                        "type": "string"
+                                    },
+                                    "device_brand": {
+                                        "type": "string"
+                                    },
+                                    "device_model": {
+                                        "type": "string"
+                                    },
+                                    "app_type": {
+                                        "type": "string"
+                                    },
+                                    "app_version": {
+                                        "type": "string"
+                                    },
+                                    "unique_machine_id": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successfully get system sign in."
+                    }
+                }
+            }
+        },
+        "/v1/auth/sign-in":{
+            "post":{
+                "tags":[
+                    "Auth"
+                ],
+                "summary": "User sign in",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "company_code": {
+                                        "type": "string"
+                                    },
+                                    "store_id": {
+                                        "type": "integer"
+                                    },
+                                    "user_name": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    },
+                                    "platform": {
+                                        "type": "string"
+                                    },
+                                    "os_version": {
+                                        "type": "string"
+                                    },
+                                    "device_brand": {
+                                        "type": "string"
+                                    },
+                                    "device_model": {
+                                        "type": "string"
+                                    },
+                                    "app_type": {
+                                        "type": "string"
+                                    },
+                                    "app_version": {
+                                        "type": "string"
+                                    },
+                                    "unique_machine_id": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successfully get sign in."
+                    }
+                }
+            }
+        },
+        "/v1/auth/refresh-sign-in":{
+            "post":{
+                "tags":[
+                    "Auth"
+                ],
+                "summary": "Refresh user sign in",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "bearer_token": {
+                                        "type": "string"
+                                    },
+                                    "unique_machine_id": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successfully refresh signin."
+                    }
+                }
+            }
+        },
+        "/v1/auth/set-pops-device":{
+            "post":{
+                "tags":[
+                    "Auth"
+                ],
+                "summary": "Set the POPS machine to the database",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "company_code": {
+                                        "type": "string"
+                                    },
+                                    "store_id": {
+                                        "type": "integer"
+                                    },
+                                    "platform": {
+                                        "type": "string"
+                                    },
+                                    "os_version": {
+                                        "type": "string"
+                                    },
+                                    "device_brand": {
+                                        "type": "string"
+                                    },
+                                    "device_model": {
+                                        "type": "string"
+                                    },
+                                    "app_type": {
+                                        "type": "string"
+                                    },
+                                    "app_version": {
+                                        "type": "string"
+                                    },
+                                    "unique_machine_id": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successfully set POPS device."
+                    }
+                }
+            }
+        },
+        "/v1/store/get-store-selections":{
+            "post":{
+                "tags":[
+                    "Store"
+                ],
+                "summary": "Displays a list of stores owned by the company",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "company_code": {
+                                        "type": "string"
+                                    },
+                                    "platform": {
+                                        "type": "string"
+                                    },
+                                    "os_version": {
+                                        "type": "string"
+                                    },
+                                    "device_brand": {
+                                        "type": "string"
+                                    },
+                                    "device_model": {
+                                        "type": "string"
+                                    },
+                                    "app_type": {
+                                        "type": "string"
+                                    },
+                                    "app_version": {
+                                        "type": "string"
+                                    },
+                                    "unique_machine_id": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Found Stores."
+                    }
+                }
+            }
+        },
+        "/v1/store/get-store-detail":{
+            "post":{
+                "tags":[
+                    "Store"
+                ],
+                "summary": "Displays detail store information",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "last_sync": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully get store detail."
+                    }
+                }
+            }
+        },
+        "/v1/device/get-devices":{
+            "post":{
+                "tags":[
+                    "Device"
+                ],
+                "summary": "Displays a list of devices owned by the store",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "last_sync": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Found devices."
+                    }
+                }
+            }
+        },
+        "/v1/device/set-devices":{
+            "post":{
+                "tags":[
+                    "Device"
+                ],
+                "summary": "Set the devices to the database. action 1:INSERT; 2:UPDATE: 3:DELETE;",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type":"array",
+                                "items":{
+                                    "type": "object",
+                                    "properties": {
+                                        "action":{
+                                            "type":"integer"
+                                        },
+                                        "offline_device_id": {
+                                            "type": "string"
+                                        },
+                                        "device_name": {
+                                            "type": "string"
+                                        },
+                                        "device_type": {
+                                            "type": "string"
+                                        },
+                                        "ip_address_url":{
+                                            "type": "string"
+                                        },
+                                        "payment_merchant": {
+                                            "type": "string"
+                                        },
+                                        "payment_merchant_identifier": {
+                                            "type": "string"
+                                        },
+                                        "payment_terminal_identifier": {
+                                            "type": "string"
+                                        },
+                                        "payment_private_key_file_id": {
+                                            "type": "string"
+                                        },
+                                        "payment_public_key_file_id": {
+                                            "type": "string"
+                                        },
+                                        "printer_paper_width": {
+                                            "type": "string"
+                                        },
+                                        "printer_font_size": {
+                                            "type": "integer"
+                                        },
+                                        "ip_port_no": {
+                                            "type": "string"
+                                        },
+                                        "device_com_port": {
+                                            "type": "string"
+                                        },
+                                        "device_control_codes": {
+                                            "type": "string"
+                                        },
+                                        "printer_local_name": {
+                                            "type": "string"
+                                        },
+                                        "printer_model": {
+                                            "type": "string"
+                                        },
+                                        "created_by": {
+                                            "type": "string"
+                                        },
+                                        "updated_by": {
+                                            "type": "string"
+                                        },
+                                        "last_updated_src": {
+                                            "type": "string"
+                                        },
+                                        "version": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }      
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully set Devices."
+                    }
+                }
+            }
+        },
+        "/v1/register/get-registers":{
+            "post":{
+                "tags":[
+                    "Register"
+                ],
+                "summary": "Displays a list of Register owned by the store and the devices related to the register",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "last_sync": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Found Register."
+                    }
+                }
+            }
+        },
+        "/v1/register/set-registers":{
+            "post":{
+                "tags":[
+                    "Register"
+                ],
+                "summary": "Set the registers to the database. action 2:UPDATE selected columns only.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type":"array",
+                                "items":{
+                                    "type": "object",
+                                    "properties": {
+                                        "action":{
+                                            "type":"integer"
+                                        },
+                                        "register_id":{
+                                            "type":"integer"
+                                        },
+                                        "store_id":{
+                                            "type":"integer"
+                                        },
+                                        "register_code": {
+                                            "type": "string"
+                                        },
+                                        "register_name": {
+                                            "type": "string"
+                                        },
+                                        "is_multi_currency_support":{
+                                            "type":"integer"
+                                        },
+                                        "is_auto_logoff":{
+                                            "type":"integer"
+                                        },
+                                        "cash_drawer_type": {
+                                            "type": "string"
+                                        },
+                                        "last_used_machine_id": {
+                                            "type": "string"
+                                        },
+                                        "previous_used_machine_id1": {
+                                            "type": "string"
+                                        },
+                                        "previous_used_machine_id2": {
+                                            "type": "string"
+                                        },
+                                        "reason_on_change_of_machine": {
+                                            "type": "string"
+                                        },
+                                        "cash_drawer1_con_type": {
+                                            "type": "string"
+                                        },
+                                        "is_active":{
+                                            "type":"integer"
+                                        },
+                                        "created_by": {
+                                            "type": "string"
+                                        },
+                                        "updated_by": {
+                                            "type": "string"
+                                        },
+                                        "last_updated_src": {
+                                            "type": "string"
+                                        },
+                                        "version": {
+                                            "type": "string"
+                                        },
+                                        "offline_device_ids": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }      
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully set Registers."
+                    }
+                }
+            }
+        },
+        "/v1/user/get-users":{
+            "post":{
+                "tags":[
+                    "User"
+                ],
+                "summary": "Displays all users of the company.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "last_sync": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully get user."
+                    }
+                }
+            }
+        },
+        "/v1/item/get-items":{
+            "post":{
+                "tags":[
+                    "Item"
+                ],
+                "summary": "Displays all items of the company.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "last_sync": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Found Items."
+                    }
+                }
+            }
+        },
+        "/v1/item/get-item-price-rules":{
+            "post":{
+                "tags":[
+                    "Item"
+                ],
+                "summary": "Displays all item's price rule of the company.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "last_sync": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Found Item Price Rules."
+                    }
+                }
+            }
+        },
+        "/v1/item/get-categories":{
+            "post":{
+                "tags":[
+                    "Item"
+                ],
+                "summary": "Displays all categories.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "last_sync": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Found Categories."
+                    }
+                }
+            }
+        },
+        "/v1/tax/get-taxes":{
+            "post":{
+                "tags":[
+                    "Tax"
+                ],
+                "summary": "Displays all taxes of the company.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "last_sync": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully get taxes."
+                    }
+                }
+            }
+        },
+        "/v1/tax/get-tax-overrides":{
+            "post":{
+                "tags":[
+                    "Tax"
+                ],
+                "summary": "Displays all tax overrides of the store.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "last_sync": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully get tax overrides."
+                    }
+                }
+            }
+        },
+        "/v1/general/get-general-settings":{
+            "post":{
+                "tags":[
+                    "General"
+                ],
+                "summary": "Displays general setting (global and company based / store based / register based / device based). The record will not be downloaded if one of the ID's column is INACTIVE.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "last_sync": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully get general setting."
+                    }
+                }
+            }
+        },
+        "/v1/general/get-rounding-rules":{
+            "post":{
+                "tags":[
+                    "General"
+                ],
+                "summary": "Display rounding rules.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "last_sync": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Found rounding rule."
+                    }
+                }
+            }
+        },
+        "/v1/general/get-countries":{
+            "post":{
+                "tags":[
+                    "General"
+                ],
+                "summary": "Displays country",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "last_sync": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully get country."
+                    }
+                }
+            }
+        },
+        "/v1/general/get-states":{
+            "post":{
+                "tags":[
+                    "General"
+                ],
+                "summary": "Displays state",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "last_sync": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully get state."
+                    }
+                }
+            }
+        },
+        "/v1/general/get-nationalities":{
+            "post":{
+                "tags":[
+                    "General"
+                ],
+                "summary": "Displays nationality.",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully get nationality."
+                    }
+                }
+            }
+        },
+        "/v1/general/get-field-options":{
+            "post":{
+                "tags":[
+                    "General"
+                ],
+                "summary": "Displays field option.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "last_sync": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully get field option."
+                    }
+                }
+            }
+        },
+        "/v1/general/get-languages":{
+            "post":{
+                "tags":[
+                    "General"
+                ],
+                "summary": "Displays language.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "last_sync": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully get language."
+                    }
+                }
+            }
+        },
+        "/v1/general/get-language-labels":{
+            "post":{
+                "tags":[
+                    "General"
+                ],
+                "summary": "Displays language labels (translations).",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "last_sync": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully get language labels (translations)."
+                    }
+                }
+            }
+        },
+        "/v1/general/get-departments":{
+            "post":{
+                "tags":[
+                    "General"
+                ],
+                "summary": "Displays department.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "last_sync": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully get department."
+                    }
+                }
+            }
+        },
+        "/v1/general/get-cash-denominations":{
+            "post":{
+                "tags":[
+                    "General"
+                ],
+                "summary": "Displays cash denominations.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "last_sync": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully get cash denominations."
+                    }
+                }
+            }
+        },
+        "/v1/general/get-tender-types":{
+            "post":{
+                "tags":[
+                    "General"
+                ],
+                "summary": "Displays tender types.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "last_sync": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully get tender types."
+                    }
+                }
+            }
+        },
+        "/v1/general/get-general-reasons":{
+            "post":{
+                "tags":[
+                    "General"
+                ],
+                "summary": "Displays general reasons.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "last_sync": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully get general reasons."
+                    }
+                }
+            }
+        },
+        "/v1/general/get-currencies":{
+            "post":{
+                "tags":[
+                    "General"
+                ],
+                "summary": "Displays currencies.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "last_sync": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully get currencies."
+                    }
+                }
+            }
+        },
+        "/v1/general/set-currencies":{
+            "post":{
+                "tags":[
+                    "General"
+                ],
+                "summary": "Set currencies.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "action": {
+                                        "type": "integer"
+                                    },
+                                    "curr_rate_id": {
+                                        "type": "integer"
+                                    },
+                                    "foreign_currency_id": {
+                                        "type": "integer"
+                                    },
+                                    "foreign_iso_code": {
+                                        "type": "integer"
+                                    },
+                                    "foreign_symbol": {
+                                        "type": "integer"
+                                    },
+                                    "foreign_currency_name": {
+                                        "type": "integer"
+                                    },
+                                    "foreign_amt": {
+                                        "type": "integer"
+                                    },
+                                    "exchange_rate": {
+                                        "type": "integer"
+                                    },
+                                    "local_currency_id": {
+                                        "type": "integer"
+                                    },
+                                    "local_iso_code": {
+                                        "type": "integer"
+                                    },
+                                    "local_symbol": {
+                                        "type": "integer"
+                                    },
+                                    "local_currency_name": {
+                                        "type": "integer"
+                                    },
+                                    "company_id": {
+                                        "type": "integer"
+                                    },
+                                    "is_active": {
+                                        "type": "integer"
+                                    },
+                                    "created_by": {
+                                        "type": "integer"
+                                    },
+                                    "created_date": {
+                                        "type": "integer"
+                                    },
+                                    "updated_by": {
+                                        "type": "integer"
+                                    },
+                                    "updated_date": {
+                                        "type": "integer"
+                                    },
+                                    "version": {
+                                        "type": "integer"
+                                    },
+                                    "last_updated_src": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully set currencies."
+                    }
+                }
+            }
+        },
+        
+        "/v1/general/get-service-charges":{
+            "post":{
+                "tags":[
+                    "General"
+                ],
+                "summary": "Displays service charges.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "last_sync": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully get service charges."
+                    }
+                }
+            }
+        },
+        "/v1/custom-config/get-custom-configs":{
+            "post":{
+                "tags":[
+                    "Custom Configuration"
+                ],
+                "summary": "Displays custom configuration (company based / store based / register based). The record will not be downloaded if one of the ID's column is INACTIVE.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "last_sync": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully get custom configuration."
+                    }
+                }
+            }
+        },
+        "/v1/custom-config/set-custom-configs":{
+            "post":{
+                "tags":[
+                    "Custom Configuration"
+                ],
+                "summary": "Set the Custom Configurations to the database.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type":"array",
+                                "items":{
+                                    "type": "object",
+                                    "properties": {
+                                        "action":{
+                                            "type":"integer"
+                                        },
+                                        "offline_custom_config_id": {
+                                            "type": "string"
+                                        },
+                                        "company_id": {
+                                            "type": "integer"
+                                        },
+                                        "register_id": {
+                                            "type": "string"
+                                        },
+                                        "config_name":{
+                                            "type": "string"
+                                        },
+                                        "config_type": {
+                                            "type": "string"
+                                        },
+                                        "template_type": {
+                                            "type": "string"
+                                        },
+                                        "config_json": {
+                                            "type": "string"
+                                        },
+                                        "is_default": {
+                                            "type": "integer"
+                                        },
+                                        "is_custom": {
+                                            "type": "integer"
+                                        },
+                                        "created_by": {
+                                            "type": "string"
+                                        },
+                                        "created_date": {
+                                            "type": "string"
+                                        },
+                                        "updated_by": {
+                                            "type": "string"
+                                        },
+                                        "updated_date": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully Set Custom Configurations."
+                    }
+                }
+            }
+        },
+        "/v1/sync-log/get-sync-logs":{
+            "post":{
+                "tags":[
+                    "Sync Log"
+                ],
+                "summary": "Displays sync logs based on the store id.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "last_sync": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully get sync logs."
+                    }
+                }
+            }
+        },
+        "/v1/sync-log/set-sync-logs":{
+            "post":{
+                "tags":[
+                    "Sync Log"
+                ],
+                "summary": "Set the Sync Log to the database.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type":"array",
+                                "items":{
+                                    "type": "object",
+                                    "properties": {
+                                        "offline_sync_log_id": {
+                                            "type": "integer"
+                                        },
+                                        "company_id": {
+                                            "type": "integer"
+                                        },
+                                        "device_time": {
+                                            "type": "string"
+                                        },
+                                        "device_type":{
+                                            "type": "string"
+                                        },
+                                        "store_id": {
+                                            "type": "integer"
+                                        },
+                                        "pops_device_id": {
+                                            "type": "integer"
+                                        },
+                                        "register_id": {
+                                            "type": "integer"
+                                        },
+                                        "device_id": {
+                                            "type": "integer"
+                                        },
+                                        "platform": {
+                                            "type": "string"
+                                        },
+                                        "os_version": {
+                                            "type": "string"
+                                        },
+                                        "brand": {
+                                            "type": "string"
+                                        },
+                                        "model": {
+                                            "type": "string"
+                                        },
+                                        "app_version": {
+                                            "type": "string"
+                                        },
+                                        "user_id": {
+                                            "type": "integer"
+                                        },
+                                        "user_name": {
+                                            "type": "string"
+                                        },
+                                        "printer_model": {
+                                            "type": "string"
+                                        },
+                                        "status": {
+                                            "type": "string"
+                                        },
+                                        "target_service": {
+                                            "type": "string"
+                                        },
+                                        "total_sync_records": {
+                                            "type": "integer"
+                                        },
+                                        "created_by": {
+                                            "type": "string"
+                                        },
+                                        "created_date": {
+                                            "type": "string"
+                                        },
+                                        "version": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully Set Sync Logs."
+                    }
+                }
+            }
+        },
+        "/v1/sync-log/set-sync-conflict-logs":{
+            "post":{
+                "tags":[
+                    "Sync Log"
+                ],
+                "summary": "Set the Sync Conflict Log to the database.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type":"array",
+                                "items":{
+                                    "type": "object",
+                                    "properties": {
+                                        "offline_sync_conflict_log_id": {
+                                            "type": "integer"
+                                        },
+                                        "company_id": {
+                                            "type": "integer"
+                                        },
+                                        "store_id": {
+                                            "type": "integer"
+                                        },
+                                        "device_type":{
+                                            "type": "string"
+                                        },
+                                        "target_table":{
+                                            "type": "string"
+                                        },
+                                        "conflict_record_json1":{
+                                            "type": "string"
+                                        },
+                                        "conflict_record_json2":{
+                                            "type": "string"
+                                        },
+                                        "conflict_different":{
+                                            "type": "string"
+                                        },
+                                        "created_by": {
+                                            "type": "string"
+                                        },
+                                        "created_date": {
+                                            "type": "string"
+                                        },
+                                        "version": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully Set Sync Conflict Logs."
+                    }
+                }
+            }
+        },
+        "/v1/customer/get-customers":{
+            "post":{
+                "tags":[
+                    "Customer"
+                ],
+                "summary": "Displays customers based on the company id.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "last_sync": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully get customers."
+                    }
+                }
+            }
+        },
+        "/v1/customer/get-customer-address":{
+            "post":{
+                "tags":[
+                    "Customer"
+                ],
+                "summary": "Displays customer address based on the customers in the company.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "last_sync": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully get customer addresses."
+                    }
+                }
+            }
+        },
+        "/v1/customer/get-customer-groups":{
+            "post":{
+                "tags":[
+                    "Customer"
+                ],
+                "summary": "Displays customer groups based on the company id.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "last_sync": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully get customer group."
+                    }
+                }
+            }
+        },
+        "/v1/customer/set-customers":{
+            "post":{
+                "tags":[
+                    "Customer"
+                ],
+                "summary": "Set the Customers to the database.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type":"array",
+                                "items":{
+                                    "type": "object",
+                                    "properties": {
+                                        "action": {
+                                            "type": "integer"
+                                        },
+                                        "customer_id": {
+                                            "type": "integer"
+                                        },
+                                        "customer_group_id": {
+                                            "type": "integer"
+                                        },
+                                        "offline_customer_id": {
+                                            "type": "integer"
+                                        },
+                                        "nationality_id": {
+                                            "type": "integer"
+                                        },
+                                        "cust_code": {
+                                            "type": "string"
+                                        },
+                                        "external_code": {
+                                            "type": "string"
+                                        },
+                                        "customer_name": {
+                                            "type": "string"
+                                        },
+                                        "first_name": {
+                                            "type": "string"
+                                        },
+                                        "last_name": {
+                                            "type": "string"
+                                        },
+                                        "identification_no": {
+                                            "type": "string"
+                                        },
+                                        "title": {
+                                            "type": "string"
+                                        },
+                                        "employer_name": {
+                                            "type": "string"
+                                        },
+                                        "gender": {
+                                            "type": "string"
+                                        },
+                                        "race": {
+                                            "type": "string"
+                                        },
+                                        "marital_status": {
+                                            "type": "string"
+                                        },
+                                        "email": {
+                                            "type": "string"
+                                        },
+                                        "email_opt_out": {
+                                            "type": "integer"
+                                        },
+                                        "mobile_no": {
+                                            "type": "string"
+                                        },
+                                        "mobile_opt_out": {
+                                            "type": "integer"
+                                        },
+                                        "comm_preferences": {
+                                            "type": "string"
+                                        },
+                                        "bank_acc_no": {
+                                            "type": "string"
+                                        },
+                                        "phone": {
+                                            "type": "string"
+                                        },
+                                        "fax": {
+                                            "type": "string"
+                                        },
+                                        "website": {
+                                            "type": "string"
+                                        },
+                                        "is_loyalty_enabled": {
+                                            "type": "integer"
+                                        },
+                                        "prefer_lang": {
+                                            "type": "string"
+                                        },
+                                        "note": {
+                                            "type": "string"
+                                        },
+                                        "store_credit_balance": {
+                                            "type": "integer"
+                                        },
+                                        "last_purchase_date": {
+                                            "type": "string"
+                                        },
+                                        "sales_rep_emp_code": {
+                                            "type": "string"
+                                        },
+                                        "sales_rep_user_name": {
+                                            "type": "string"
+                                        },
+                                        "tags": {
+                                            "type": "string"
+                                        },
+                                        "is_cust_an_employee": {
+                                            "type": "integer"
+                                        },
+                                        "source_type": {
+                                            "type": "string"
+                                        },
+                                        "created_by": {
+                                            "type": "string"
+                                        },
+                                        "created_date": {
+                                            "type": "string"
+                                        },
+                                        "updated_by": {
+                                            "type": "string"
+                                        },
+                                        "updated_date": {
+                                            "type": "string"
+                                        },
+                                        "version": {
+                                            "type": "integer"
+                                        },
+                                        "last_updated_src": {
+                                            "type": "integer"
+                                        },
+                                        "customer_address":{
+                                            "type":"array",
+                                            "items":{
+                                                "type":"object",
+                                                "properties":{
+                                                    "action":{
+                                                        "type":"integer"
+                                                    },
+                                                    "address_type":{
+                                                        "type":"string"
+                                                    },
+                                                    "address_line_1":{
+                                                        "type":"string"
+                                                    },
+                                                    "address_line_2":{
+                                                        "type":"string"
+                                                    },
+                                                    "city":{
+                                                        "type":"string"
+                                                    },
+                                                    "postcode":{
+                                                        "type":"string"
+                                                    },
+                                                    "state_id":{
+                                                        "type":"integer"
+                                                    },
+                                                    "country_id":{
+                                                        "type":"integer"
+                                                    },
+                                                    "is_default":{
+                                                        "type":"integer"
+                                                    },
+                                                    "created_by": {
+                                                        "type": "string"
+                                                    },
+                                                    "created_date": {
+                                                        "type": "string"
+                                                    },
+                                                    "updated_by": {
+                                                        "type": "string"
+                                                    },
+                                                    "updated_date": {
+                                                        "type": "string"
+                                                    },
+                                                    "version": {
+                                                        "type": "integer"
+                                                    },
+                                                    "last_updated_src": {
+                                                        "type": "integer"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully Set Customers."
+                    }
+                }
+            }
+        },
+        "/v1/day-shift/get-business-days":{
+            "post":{
+                "tags":[
+                    "Shift"
+                ],
+                "summary": "Displays business days based on the company and store id.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "last_sync": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully get business days."
+                    }
+                }
+            }
+        },
+        "/v1/day-shift/set-business-days":{
+            "post":{
+                "tags":[
+                    "Shift"
+                ],
+                "summary": "Set the business day to the database.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type":"array",
+                                "items":{
+                                    "type": "object",
+                                    "properties": {
+                                        "action": {
+                                            "type": "integer"
+                                        },
+                                        "offline_dayshift_id": {
+                                            "type": "string"
+                                        },
+                                        "parent_dayshift_id": {
+                                            "type": "integer"
+                                        },
+                                        "offline_parent_dayshift_id": {
+                                            "type": "string"
+                                        },
+                                        "dayshift_type": {
+                                            "type": "string"
+                                        },
+                                        "business_date": {
+                                            "type": "integer"
+                                        },
+                                        "register_id": {
+                                            "type": "integer"
+                                        },
+                                        "shift_no": {
+                                            "type": "integer"
+                                        },
+                                        "opened_datetime": {
+                                            "type": "integer"
+                                        },
+                                        "opened_by_user_id": {
+                                            "type": "integer"
+                                        },
+                                        "opened_by_user_name": {
+                                            "type": "string"
+                                        },
+                                        "opening_cash_amt": {
+                                            "type": "integer"
+                                        },
+                                        "closed_datetime": {
+                                            "type": "integer"
+                                        },
+                                        "closed_by_user_id": {
+                                            "type": "integer"
+                                        },
+                                        "closing_cash_amt": {
+                                            "type": "integer"
+                                        },
+                                        "notes": {
+                                            "type": "string"
+                                        },
+                                        "status": {
+                                            "type": "string"
+                                        },
+                                        "currency_id": {
+                                            "type": "integer"
+                                        },
+                                        "total_amt_after_disc_b4tax_sc_rd": {
+                                            "type": "integer"
+                                        },
+                                        "total_amt_after_disc_tax_sc_rd": {
+                                            "type": "integer"
+                                        },
+                                        "any_excess_amt": {
+                                            "type": "integer"
+                                        },
+                                        "total_sales_rounding": {
+                                            "type": "integer"
+                                        },
+                                        "verified_user_id": {
+                                            "type": "integer"
+                                        },
+                                        "confirmed_user_id": {
+                                            "type": "integer"
+                                        },
+                                        "created_by": {
+                                            "type": "string"
+                                        },
+                                        "created_date": {
+                                            "type": "string"
+                                        },
+                                        "updated_by": {
+                                            "type": "string"
+                                        },
+                                        "updated_date": {
+                                            "type": "string"
+                                        },
+                                        "version": {
+                                            "type": "integer"
+                                        },
+                                        "last_updated_src": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully set Store Business Days."
+                    }
+                }
+            }
+        },
+        "/v1/day-shift/get-day-shifts":{
+            "post":{
+                "tags":[
+                    "Shift"
+                ],
+                "summary": "Displays day shifts based on the company and store id.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "last_sync": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully get day shifts."
+                    }
+                }
+            }
+        },
+        "/v1/day-shift/set-day-shifts":{
+            "post":{
+                "tags":[
+                    "Shift"
+                ],
+                "summary": "Set the shift day to the database.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type":"array",
+                                "items":{
+                                    "type": "object",
+                                    "properties": {
+                                        "action": {
+                                            "type": "integer"
+                                        },
+                                        "offline_dayshift_id": {
+                                            "type": "string"
+                                        },
+                                        "parent_dayshift_id": {
+                                            "type": "integer"
+                                        },
+                                        "offline_parent_dayshift_id": {
+                                            "type": "string"
+                                        },
+                                        "dayshift_type": {
+                                            "type": "string"
+                                        },
+                                        "business_date": {
+                                            "type": "integer"
+                                        },
+                                        "register_id": {
+                                            "type": "integer"
+                                        },
+                                        "shift_no": {
+                                            "type": "integer"
+                                        },
+                                        "opened_datetime": {
+                                            "type": "integer"
+                                        },
+                                        "opened_by_user_id": {
+                                            "type": "integer"
+                                        },
+                                        "opened_by_user_name": {
+                                            "type": "string"
+                                        },
+                                        "opening_cash_amt": {
+                                            "type": "integer"
+                                        },
+                                        "closed_datetime": {
+                                            "type": "integer"
+                                        },
+                                        "closed_by_user_id": {
+                                            "type": "integer"
+                                        },
+                                        "closing_cash_amt": {
+                                            "type": "integer"
+                                        },
+                                        "notes": {
+                                            "type": "string"
+                                        },
+                                        "status": {
+                                            "type": "string"
+                                        },
+                                        "currency_id": {
+                                            "type": "integer"
+                                        },
+                                        "total_amt_after_disc_b4tax_sc_rd": {
+                                            "type": "integer"
+                                        },
+                                        "total_amt_after_disc_tax_sc_rd": {
+                                            "type": "integer"
+                                        },
+                                        "any_excess_amt": {
+                                            "type": "integer"
+                                        },
+                                        "total_sales_rounding": {
+                                            "type": "integer"
+                                        },
+                                        "verified_user_id": {
+                                            "type": "integer"
+                                        },
+                                        "confirmed_user_id": {
+                                            "type": "integer"
+                                        },
+                                        "created_by": {
+                                            "type": "string"
+                                        },
+                                        "created_date": {
+                                            "type": "string"
+                                        },
+                                        "updated_by": {
+                                            "type": "string"
+                                        },
+                                        "updated_date": {
+                                            "type": "string"
+                                        },
+                                        "version": {
+                                            "type": "integer"
+                                        },
+                                        "last_updated_src": {
+                                            "type": "integer"
+                                        },
+                                        "customer_address":{
+                                            "type":"array",
+                                            "items":{
+                                                "type":"object",
+                                                "properties":{
+                                                    "action":{
+                                                        "type":"integer"
+                                                    },
+                                                    "offline_dayshift_payment_id":{
+                                                        "type":"string"
+                                                    },
+                                                    "dayshift_id":{
+                                                        "type":"integer"
+                                                    },
+                                                    "payment_name":{
+                                                        "type":"string"
+                                                    },
+                                                    "currency_id":{
+                                                        "type":"integer"
+                                                    },
+                                                    "exchange_rate":{
+                                                        "type":"integer"
+                                                    },
+                                                    "counted_amt":{
+                                                        "type":"integer"
+                                                    },
+                                                    "variance_amt":{
+                                                        "type":"integer"
+                                                    },
+                                                    "variance_general_reason_id":{
+                                                        "type":"integer"
+                                                    },
+                                                    "notes":{
+                                                        "type":"string"
+                                                    },
+                                                    "status":{
+                                                        "type":"string"
+                                                    },
+                                                    "submitted_by_user_id": {
+                                                        "type": "integer"
+                                                    },
+                                                    "approved_by_user_id": {
+                                                        "type": "integer"
+                                                    },
+                                                    "created_by": {
+                                                        "type": "string"
+                                                    },
+                                                    "created_date": {
+                                                        "type": "string"
+                                                    },
+                                                    "updated_by": {
+                                                        "type": "string"
+                                                    },
+                                                    "updated_date": {
+                                                        "type": "string"
+                                                    },
+                                                    "version": {
+                                                        "type": "integer"
+                                                    },
+                                                    "last_updated_src": {
+                                                        "type": "integer"
+                                                    },
+                                                    "submitted_date": {
+                                                        "type": "integer"
+                                                    },
+                                                    "approval_date": {
+                                                        "type": "integer"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully set Day Shifts."
+                    }
+                }
+            }
+        },
+        "/v1/attendance/get-attendances":{
+            "post":{
+                "tags":[
+                    "Attendance"
+                ],
+                "summary": "Displays attendances based on the store id.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "last_sync": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully Get Attendances."
+                    }
+                }
+            }
+        },
+        "/v1/attendance/set-attendances":{
+            "post":{
+                "tags":[
+                    "Attendance"
+                ],
+                "summary": "Set the attendances to the database.",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "action": {
+                                        "type": "integer"
+                                    },
+                                    "time_attendance_id": {
+                                        "type": "string"
+                                    },
+                                    "offline_time_attend_id": {
+                                        "type": "integer"
+                                    },
+                                    "dayshift_id": {
+                                        "type": "integer"
+                                    },
+                                    "offline_dayshift_id": {
+                                        "type": "integer"
+                                    },
+                                    "company_id": {
+                                        "type": "integer"
+                                    },
+                                    "store_id": {
+                                        "type": "integer"
+                                    },
+                                    "user_id": {
+                                        "type": "integer"
+                                    },
+                                    "clock_in": {
+                                        "type": "string"
+                                    },
+                                    "clock_out": {
+                                        "type": "string"
+                                    },
+                                    "created_by": {
+                                        "type": "string"
+                                    },
+                                    "created_date": {
+                                        "type": "string"
+                                    },
+                                    "updated_by": {
+                                        "type": "string"
+                                    },
+                                    "updated_date": {
+                                        "type": "string"
+                                    },
+                                    "version": {
+                                        "type": "integer"
+                                    },
+                                    "last_updated_src": {
+                                        "type": "string"
+                                    },
+                                    "user_name": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully Set Attendances."
+                    }
+                }
+            }
+        }
+    }
+}
